@@ -90,7 +90,7 @@ class Generator(object):
 
             # prepare conditioning for moglow (control + previous poses)
             cond = self.prepare_cond(autoreg.copy(), control.copy())
-
+            cond = cond[:,630:,:]
             # sample from Moglow
             #sampled_z_random = ( torch.ones((nn,63,1)) * -1.0).to(self.data_device)
             sampled = graph(z=None, cond=cond, ee_cond = ee_cond, eps_std=eps_std, reverse=True)

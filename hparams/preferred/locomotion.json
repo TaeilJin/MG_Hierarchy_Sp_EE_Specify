@@ -55,7 +55,7 @@
         "warm_start": ""
     },
     "Infer": {
-        "pre_trained": "/root/home/project/data/results/test_Hierarchy_Sp_EE/save_80k0.pkg"
+        "pre_trained": ""
     }
 }
 

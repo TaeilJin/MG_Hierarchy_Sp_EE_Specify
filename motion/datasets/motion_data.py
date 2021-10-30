@@ -116,7 +116,7 @@ class MotionDataset(Dataset):
             mask = np.repeat(keep_pose, n_feats, axis = 0)
             mask = np.concatenate((mask, mask_cond), axis=0)
             #print(mask)
-
+            cond_masked = cond_masked[(n_feats*self.seqlen):,:]
             # # generate end-effector 
             # ee_cond_masked = self.ee_cond[idx,:,:].copy()
             # keep_ee_cond = np.random.rand(5, tt)<(1-0.5)
@@ -155,7 +155,7 @@ class MotionDataset(Dataset):
             """
            
             
-            cond_masked = cond_masked*mask
+            
             sample = {'x': self.x[idx,:,:], 'cond': cond_masked, 'ee_cond' : ee_cond_masked}
         else:
             sample = {'x': self.x[idx,:,:], 'cond': self.cond[idx,:,:], 'ee_cond' : self.ee_cond[idx,:,:]}

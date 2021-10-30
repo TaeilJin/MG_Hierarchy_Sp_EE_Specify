@@ -112,7 +112,7 @@ class Locomotion():
         self.validation_dataset = MotionDataset(validation_data[:,:,-3:], validation_data[:,:,:-3], hparams.Data.seqlen, hparams.Data.n_lookahead, hparams.Data.dropout)
         self.seqlen = hparams.Data.seqlen
         self.n_x_channels = all_test_data.shape[2]-3
-        self.n_cond_channels = self.n_x_channels*hparams.Data.seqlen + 3*(hparams.Data.seqlen + 1 + hparams.Data.n_lookahead)
+        self.n_cond_channels = 3*(hparams.Data.seqlen + 1 + hparams.Data.n_lookahead) #self.n_x_channels*hparams.Data.seqlen + 3*(hparams.Data.seqlen + 1 + hparams.Data.n_lookahead)
 
     def save_animation_withRef(self, control_data, motion_data, refer_data, filename):
         animation_data = np.concatenate((motion_data,control_data), axis=2)
